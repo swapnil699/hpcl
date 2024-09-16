@@ -4,12 +4,16 @@ import org.example.hpcl.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface UserRepositories extends JpaRepository<User,Integer> {
-    @Override
-    Optional<User> findById(Integer integer);
+public interface UserRepositories extends JpaRepository<User, Long> {
 
-    User save(User user);
+    @Override
+    Optional<User> findById(Long id);
+
+    Optional<User> findUserByEmail(String email);
+
+    List<User> findAll();
 }
